@@ -22,9 +22,6 @@ nums = randomize(range(1, grid+1))
 board = np.full(shape=(9,9), fill_value=[[nums[pattern(r,c)] for r in puzzle_rows] for c in puzzle_cols])
 board1 = np.full(shape=(9,9), fill_value=[[nums[pattern(r,c)] for r in puzzle_rows] for c in puzzle_cols])
 
-print(board)
-print(board1)
-
 ### Variables ###
 x = 0
 y = 0
@@ -42,9 +39,6 @@ def cord(pos):
     if pos[0] < width and pos[1] < height:
         x = pos[0] // tile
         y = pos[1] // tile
-        #print(x)
-        #print(y)
-        print(board[y][x])
 
 ### Draw ###
 def draw_grid():
@@ -61,7 +55,6 @@ def draw_puzzle():
     for i in range(9):
         for j in range(9):
             if board[j][i] != 0:
-                #pygame.draw.rect(window, (255,255,255), (i,j,tile,tile))
                 pygame.draw.rect(window, (255,255,255), (i*tile, j*tile, tile+1, tile+1))
 
                 txt = fnt.render(str(board[j][i]), 1, (0,0,0))
@@ -69,7 +62,6 @@ def draw_puzzle():
 
 def draw_cell():
     for i in range(2):
-        #if selected == True:
         pygame.draw.line(window, (255, 0, 0), (x * tile-3, (y + i)*tile), (x * tile + tile + 3, (y + i)*tile), 3)
         pygame.draw.line(window, (255, 0, 0), ( (x + i)* tile, y * tile ), ((x + i) * tile, y * tile + tile), 3)
 
@@ -163,9 +155,6 @@ def main():
     else:
         print("Invalid choice")
 
-    #print(board)
-    print(board1)
-
     pygame.display.set_caption("Sudoku")
     window = pygame.display.set_mode((width, height + 50))
     window.fill((255,255,255))
@@ -207,8 +196,6 @@ def main():
                     key = 8
                 if event.key == pygame.K_9 or event.key == pygame.K_KP9:
                     key = 9
-
-                #print(key)
                 
                 if event.key == pygame.K_SPACE:
                     solve(0,0)
