@@ -72,6 +72,8 @@ def draw_val(val):
     else:
         print("Incorrect")
 
+
+
 ### Solve using backtracking ###
 def valid(i, j, val):
     for k in range(9):
@@ -163,8 +165,13 @@ def main():
     key = 0
     flag1 = 0
     run = True 
+
+    start_time = time.time()
     
     while run:
+
+        txt = str(int(time.time() - start_time))
+        window.blit(txt, (20, 650))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
